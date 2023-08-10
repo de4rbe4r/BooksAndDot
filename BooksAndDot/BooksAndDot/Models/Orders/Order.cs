@@ -13,7 +13,7 @@ namespace BooksAndDot.Models.Orders
         public int Id { get; set; }
         public string Status { get; set; }
         public double TotalSum { get; set; }
-        public DateTime CreatedAd { get; set; }
+        public DateTime CreatedAt { get; set; }
         public List<Book> Books { get; set; }
         public int UserId { get; set; }
         public User User { get; set; }
