@@ -17,14 +17,17 @@ namespace BooksAndDot.Controllers.Books {
         public CategoriesController(AppDbContext context) {
             _context = context;
         }
-
+        /// <summary>
+        /// Получение списка всех категорий
+        /// </summary>
+        /// <returns>JSON набор данных с категориями</returns>
         // GET: api/Categories
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Category>>> GetCategories() {
             return await _context.Categories.ToListAsync();
         }
 
-        // GET: api/Categories/5
+        // GET: api/v1/Categories/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Category>> GetCategory(int id) {
             var category = await _context.Categories.FindAsync(id);
