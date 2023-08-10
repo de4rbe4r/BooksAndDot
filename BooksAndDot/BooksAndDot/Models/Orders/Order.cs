@@ -1,4 +1,6 @@
 ﻿using BooksAndDot.Models.Books;
+using BooksAndDot.Models.Users;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
