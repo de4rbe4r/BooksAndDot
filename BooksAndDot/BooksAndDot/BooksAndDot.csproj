@@ -5,7 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <Folder Include="Controllers\Users\" />
+=======
+    <Folder Include="Controllers\Orders\" />
+>>>>>>> cc54b8e04076a502367948fa90ef6e4da3435e37
     <Folder Include="Models\Orders\" />
   </ItemGroup>
 
