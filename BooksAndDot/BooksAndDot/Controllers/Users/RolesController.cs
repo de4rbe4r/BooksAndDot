@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BooksAndDot.Models;
 using BooksAndDot.Models.Users;
@@ -12,7 +12,7 @@ namespace BooksAndDot.Controllers.Users
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RolesController : Controller
+    public class RolesController : ControllerBase
     {
         private readonly AppDbContext _context;
 
@@ -21,130 +21,83 @@ namespace BooksAndDot.Controllers.Users
             _context = context;
         }
 
-        // GET: Roles
-        public async Task<IActionResult> Index()
+        // GET: api/Roles
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Role>>> GetRoles()
         {
-            return View(await _context.Roles.ToListAsync());
+            return await _context.Roles.ToListAsync();
         }
 
-        // GET: Roles/Details/5
-        public async Task<IActionResult> Details(int? id)
+        // GET: api/Roles/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Role>> GetRole(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var role = await _context.Roles
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (role == null)
-            {
-                return NotFound();
-            }
-
-            return View(role);
-        }
-
-        // GET: Roles/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Roles/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Level")] Role role)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(role);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(role);
-        }
-
-        // GET: Roles/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
             var role = await _context.Roles.FindAsync(id);
+
             if (role == null)
             {
                 return NotFound();
             }
-            return View(role);
+
+            return role;
         }
 
-        // POST: Roles/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Level")] Role role)
+        // PUT: api/Roles/5
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutRole(int id, Role role)
         {
             if (id != role.Id)
             {
-                return NotFound();
+                return BadRequest();
             }
 
-            if (ModelState.IsValid)
+            _context.Entry(role).State = EntityState.Modified;
+
+            try
             {
-                try
-                {
-                    _context.Update(role);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!RoleExists(role.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                await _context.SaveChangesAsync();
             }
-            return View(role);
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!RoleExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
         }
 
-        // GET: Roles/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        // POST: api/Roles
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPost]
+        public async Task<ActionResult<Role>> PostRole(Role role)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            _context.Roles.Add(role);
+            await _context.SaveChangesAsync();
 
-            var role = await _context.Roles
-                .FirstOrDefaultAsync(m => m.Id == id);
+            return CreatedAtAction("GetRole", new { id = role.Id }, role);
+        }
+
+        // DELETE: api/Roles/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteRole(int id)
+        {
+            var role = await _context.Roles.FindAsync(id);
             if (role == null)
             {
                 return NotFound();
             }
 
-            return View(role);
-        }
-
-        // POST: Roles/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var role = await _context.Roles.FindAsync(id);
             _context.Roles.Remove(role);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+
+            return NoContent();
         }
 
         private bool RoleExists(int id)
