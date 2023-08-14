@@ -10,6 +10,8 @@ using BooksAndDot.Models.Users;
 
 namespace BooksAndDot.Controllers.Users
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class RolesController : Controller
     {
         private readonly AppDbContext _context;
