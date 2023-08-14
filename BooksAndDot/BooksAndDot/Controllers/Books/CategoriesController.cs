@@ -3,28 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BooksAndDot.Models;
+using Microsoft.AspNetCore.Mvc;
 using BooksAndDot.Models.Books;
 
 namespace BooksAndDot.Controllers.Books {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     public class CategoriesController : ControllerBase {
         private readonly AppDbContext _context;
 
         public CategoriesController(AppDbContext context) {
             _context = context;
         }
-        /// <summary>
-        /// Получение списка всех категорий
-        /// </summary>
-        /// <returns>JSON набор данных с категориями</returns>
+
         // GET: api/Categories
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Category>>> GetCategories() {
-            return await _context.Categories.ToListAsync();
+            return await _context.Categories.ToListAsync();            
         }
 
         // GET: api/v1/Categories/5

@@ -1,3 +1,5 @@
+using BooksAndDot.Models;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -21,8 +23,8 @@ namespace BooksAndDot {
         public IConfiguration Configuration { get; }
 
         public void ConfigureServices(IServiceCollection services) {
-
             services.AddControllers();
+            services.AddDbContext<AppDbContext>();
             services.AddSwaggerGen(c => { 
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "BooksAndDot", Version = "v1" }); });
         }
@@ -40,7 +42,7 @@ namespace BooksAndDot {
             app.UseAuthorization();
             app.UseEndpoints(endpoints => {
                 endpoints.MapControllers();
-                endpoints.MapSwagger();
+                //endpoints.MapSwagger();
             });
         }
     }

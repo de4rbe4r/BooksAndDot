@@ -10,8 +10,8 @@ using BooksAndDot.Models.Books;
 
 namespace BooksAndDot.Controllers.Books
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     public class AuthorsController : ControllerBase
     {
         private readonly AppDbContext _context;
