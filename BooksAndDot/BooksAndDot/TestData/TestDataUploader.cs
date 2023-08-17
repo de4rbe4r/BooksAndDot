@@ -23,7 +23,7 @@ namespace BooksAndDot.TestData
             Authors = new List<Author>();
             Books = new List<Book>();
         }
-        public void ReadAuthorsData()
+        private void ReadAuthorsData()
         {
             try
             {
@@ -36,17 +36,13 @@ namespace BooksAndDot.TestData
                         Authors.Add(new Author { FirstName = data[0], LastName = data[1] });
                     }
                 }
-                using (AppDbContext appDbContext = new AppDbContext())
-                {
-                    appDbContext.Authors.AddRange(Authors);
-                }
             } catch (Exception e)
             {
                 Console.WriteLine("Error: " + e.Message);
             }
         }
 
-        public void ReadCategoriesData()
+        private void ReadCategoriesData()
         {
             try
             {
@@ -58,9 +54,38 @@ namespace BooksAndDot.TestData
                         Categories.Add(new Category { Title = line});
                     }
                 }
-                using (AppDbContext appDbContext = new AppDbContext())
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+            }
+        }
+
+        private void ReadBooksData()
+        {
+            try
+            {
+                using (StreamReader reader = new StreamReader(pathBooks))
                 {
-                    appDbContext.Categories.AddRange(Categories);
+                    string line;
+                    while ((line = reader.ReadLine()) != null)
+                    {
+                        string[] data = line.Split(';');
+                        Author tempAuthor = new Author { FirstName = data[0], LastName = data[1] };
+                        Category tempCategory = new Category { Title = data[5] };
+
+                        if (Authors.Contains(tempAuthor)) tempAuthor = Authors.Find(a => a.Equals(tempAuthor));
+                        if (Categories.Contains(tempCategory)) tempCategory = Categories.Find(c => c.Equals(tempCategory));
+
+
+                        Books.Add(new Book {
+                            Authors = new List<Author> { tempAuthor },
+                            Title = data[2],
+                            YearPublish = Int32.Parse(data[3]),
+                            Price = Double.Parse(data[4].Replace('.',',')),
+                            Categories = new List<Category> { tempCategory }
+                        });
+                    }
                 }
             }
             catch (Exception e)
@@ -69,27 +94,17 @@ namespace BooksAndDot.TestData
             }
         }
 
-        public void ReadBooksData()
+        public void LoadTestDataToDb()
         {
-            try
+            ReadAuthorsData();
+            ReadCategoriesData();
+            ReadBooksData();
+            using (AppDbContext context = new AppDbContext())
             {
-                using (StreamReader reader = new StreamReader(pathCategories))
-                {
-                    string line;
-                    while ((line = reader.ReadLine()) != null)
-                    {
-                        string[] data = line.Split(';');
-                        Books.Add(new Book { Authors.Add(new Author { FirstName = data[0], LastName = data[1] }) });
-                    }
-                }
-                using (AppDbContext appDbContext = new AppDbContext())
-                {
-                    appDbContext.Categories.AddRange(Categories);
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Error: " + e.Message);
+                context.Books.AddRange(Books);
+                context.Categories.AddRange(Categories);
+                context.Authors.AddRange(Authors);
+                context.SaveChanges();
             }
         }
     }
