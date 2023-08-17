@@ -1,3 +1,27 @@
 BooksAndDot/.vs
 BooksAndDot/BooksAndDot/bin
 BooksAndDot/BooksAndDot/obj
+
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/booksfront/node_modules
+/booksfront/.pnp
+/booksfront.pnp.js
+
+# testing
+/booksfront/coverage
+
+# production
+/booksfront/build
+
+# misc
+/booksfront/.DS_Store
+/booksfront/.env.local
+/booksfront/.env.development.local
+/booksfront/.env.test.local
+/booksfront/.env.production.local
+
+/booksfront/npm-debug.log*
+/booksfront/yarn-debug.log*
+/booksfront/yarn-error.log*
