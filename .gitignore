@@ -25,3 +25,4 @@ BooksAndDot/BooksAndDot/obj
 /booksfront/npm-debug.log*
 /booksfront/yarn-debug.log*
 /booksfront/yarn-error.log*
+/booksfront/.idea
