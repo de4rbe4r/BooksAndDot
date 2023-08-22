@@ -16,13 +16,18 @@ using System.Threading.Tasks;
 
 namespace BooksAndDot {
     public class Startup {
+
+        readonly string MyAppCors = "_myAppCors";
         public Startup(IConfiguration configuration) {
             Configuration = configuration;
         }
-
         public IConfiguration Configuration { get; }
-
         public void ConfigureServices(IServiceCollection services) {
+            services.AddCors(opt => opt.AddPolicy(name: MyAppCors,
+                policy =>
+                {
+                    policy.WithOrigins("http://localhost:3000");
+                }));
             services.AddControllers();
             services.AddDbContext<AppDbContext>();
             services.AddSwaggerGen(c => { 
@@ -37,6 +42,8 @@ namespace BooksAndDot {
                 app.UseSwaggerUI(
                     c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "BookAndDot v1"));
             }
+
+            app.UseCors(MyAppCors);
 
             app.UseRouting();
             app.UseAuthorization();
