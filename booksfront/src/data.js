@@ -1,12 +1,19 @@
+import {getValue} from "@testing-library/user-event/dist/utils";
 
 let baseUrl = 'http://localhost:5000';
 
-function getAllBooks() {
+export function getAllBooks() {
     let url = baseUrl + '/api/Books';
-    fetch(url).then(response => response.json())
-        .then(data => { 
-            return data;
-        });
+    let temp = []
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            for (const b in data) {
+                temp.push(data[b])
+            }
+        })
+    console.log('temp: ', temp)
+    return temp
 }
 
 function sendRequest(url) {
