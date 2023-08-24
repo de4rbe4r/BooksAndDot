@@ -1,20 +1,18 @@
-﻿import logo from './logo.svg';
-import './App.css';
-import React, {useEffect, useState} from "react";
+﻿import React from "react";
+import useGetAllBooks from "./hooks/useGetAllBooks";
 
 function App() {
 
     let baseUrl = 'http://localhost:5000/api/Books';
 
-    const [books, setBooks] = useState([])
+    const [books, loading] = useGetAllBooks(baseUrl)
 
-    useEffect(() => {
-        (async () => {
-            const data = await fetch(baseUrl)
-                .then(res => res.json())
-            setBooks(data)
-        })()
-    }, [])
+    if (loading) {
+        return <h3>Загрузка...</h3>
+    }
+    if (!books?.length) {
+        return <h3>Список книг не загрузился</h3>
+    }
 
     return (
         <div className="container">
