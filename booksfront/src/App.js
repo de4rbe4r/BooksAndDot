@@ -12,7 +12,7 @@ function App() {
     if (!books?.length) {
         return <h3>Список книг не загрузился</h3>
     }
-
+    console.log(books);
     return (
         <div className="container">
             <div className="display-3">Список книг</div>
@@ -31,10 +31,10 @@ function App() {
                     books.map((b, index) => (
                         <tr key={b.id}>
                             <td>{index + 1}</td>
-                            <td>{b.author}</td>
+                            <td>{b.authors.map(a => (`${a.firstName} ${a.lastName}`)) }</td>
                             <td>{b.title}</td>
                             <td>{b.price}</td>
-                            <td>{b.categories}</td>
+                            <td>{b.categories.map(c => (c.title))}</td>
                         </tr>
                     ))
                 }

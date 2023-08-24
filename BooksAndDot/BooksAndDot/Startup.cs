@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json.Linq;
 
 using System;
 using System.Collections.Generic;
@@ -28,6 +29,10 @@ namespace BooksAndDot {
                 {
                     policy.WithOrigins("http://localhost:3000");
                 }));
+            services.AddControllersWithViews()
+            .AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+            //services.AddControllers(opt => opt.RespectBrowserAcceptHeader = true).AddNewtonsoftJson(opt => opt.JsonSerializerOptions.Re)
+            //services.AddControllers().AddNewtonsoftJson()
             services.AddControllers();
             services.AddDbContext<AppDbContext>();
             services.AddSwaggerGen(c => { 

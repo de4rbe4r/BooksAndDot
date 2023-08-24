@@ -25,7 +25,11 @@ namespace BooksAndDot.Controllers.Books
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Book>>> GetBooks()
         {
-            return await _context.Books.ToListAsync();
+            //return await _context.Books.ToListAsync();
+            return await _context.Books
+                .Include(b => b.Authors)
+                .Include(b => b.Categories)
+                .ToListAsync();
         }
 
         // GET: api/Books/5
