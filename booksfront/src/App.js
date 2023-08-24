@@ -1,17 +1,20 @@
 ﻿import logo from './logo.svg';
 import './App.css';
 import React, {useEffect, useState} from "react";
-import { getAllBooks } from './data'
 
 function App() {
+
+    let baseUrl = 'http://localhost:5000/api/Books';
 
     const [books, setBooks] = useState([])
 
     useEffect(() => {
-        setBooks(getAllBooks)
+        (async () => {
+            const data = await fetch(baseUrl)
+                .then(res => res.json())
+            setBooks(data)
+        })()
     }, [])
-
-    //console.log('books: ', books)
 
     return (
         <div className="container">
@@ -26,6 +29,19 @@ function App() {
                         <th>Жанр</th>
                     </tr>
                 </thead>
+                <tbody>
+                {
+                    books.map((b, index) => (
+                        <tr key={b.id}>
+                            <td>{index + 1}</td>
+                            <td>{b.author}</td>
+                            <td>{b.title}</td>
+                            <td>{b.price}</td>
+                            <td>{b.categories}</td>
+                        </tr>
+                    ))
+                }
+                </tbody>
             </table>
       </div>
   );

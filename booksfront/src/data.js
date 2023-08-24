@@ -1,5 +1,4 @@
 import {getValue} from "@testing-library/user-event/dist/utils";
-
 let baseUrl = 'http://localhost:5000';
 
 export function getAllBooks() {
@@ -12,15 +11,13 @@ export function getAllBooks() {
                 temp.push(data[b])
             }
         })
-    console.log('temp: ', temp)
     return temp
 }
 
-function sendRequest(url) {
-    fetch(url).then(response => response.json())
-        .then(data => {
-            console.log(data);
-            //return data;
-    });
-        
-}
+// function sendRequest(url) {
+//     fetch(url).then(response => response.json())
+//         .then(data => {
+//             console.log(data);
+//             //return data;
+//     });
+// }
