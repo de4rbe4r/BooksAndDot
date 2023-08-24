@@ -1,11 +1,10 @@
 ﻿import React from "react";
 import useGetAllBooks from "./hooks/useGetAllBooks";
+import { urlBooks } from "./urls/urlList";
 
 function App() {
 
-    let baseUrl = 'http://localhost:5000/api/Books';
-
-    const [books, loading] = useGetAllBooks(baseUrl)
+    const [books, loading] = useGetAllBooks(urlBooks)
 
     if (loading) {
         return <h3>Загрузка...</h3>
