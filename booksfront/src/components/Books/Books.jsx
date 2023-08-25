@@ -1,11 +1,11 @@
 import React from 'react';
-import useGetAllBooks from "../../hooks/useGetAllBooks";
+import useGetAll from "../../hooks/useGetAll";
 import {urlBooks} from "../../urls/urlList";
 import BooksList from "./BooksList";
 import BooksForm from "./BooksForm";
 
 const Books = () => {
-    const [books, loading] = useGetAllBooks(urlBooks)
+    const [books, loading] = useGetAll(urlBooks)
 
     if (loading) {
         return <h3>Загрузка...</h3>
@@ -16,7 +16,7 @@ const Books = () => {
 
     return (
         <div>
-            {/*<BooksForm books={books}/>*/}
+            <BooksForm books={books}/>
             <BooksList books={books}/>
         </div>
     );

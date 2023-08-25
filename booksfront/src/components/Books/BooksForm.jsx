@@ -1,14 +1,22 @@
 import React from 'react';
-import useGetAllBooks from "../../hooks/useGetAllBooks";
-import { urlAuthors } from "../../urls/urlList";
+import useGetAll from "../../hooks/useGetAll";
+import { urlAuthors, urlCategories } from "../../urls/urlList";
 
 const BooksForm = ({books}) => {
 
-    const [authors, loading] = useGetAllBooks(urlAuthors)
-    
-    // const options = authors.map((author, index) => {
-    //     return <option value={author.value} key={author.id}>{author.firstName}</option>
-    // })
+    const [authors, loadingAuthors] = useGetAll(urlAuthors)
+    const [categories, loadingCategories] = useGetAll(urlCategories)
+
+    const optionsAuthors = authors.map((a, index) => {
+        return (
+            <option value={`${a.firstName} ${a.lastName}`} key={a.id}>{`${a.firstName} ${a.lastName}`}</option>
+        )
+    })
+    const optionsCategories = categories.map((c, index) => {
+        return (
+            <option value={c.title} key={c.id}>{c.title}</option>
+        )
+    })
 
     return (
         <div>
@@ -18,13 +26,19 @@ const BooksForm = ({books}) => {
                     <input className='form-control' type="text" placeholder='Введите название'/>
                 </div>
                 <div className='col-md-3'>
-                    <input className='form-control' type='text' placeholder='Введите ФИО автора'/>
+                    <select className='form-select' defaultValue='Выберите автора'>
+                        <option disabled>Выберите автора</option>
+                        {optionsAuthors}
+                    </select>
                 </div>
                 <div className='col-md-2'>
                     <input className='form-control' type="number" placeholder='Введите год издания'/>
                 </div>
                 <div className='col-md-2'>
-                    <input className='form-control' type="text" placeholder='Введите категорию'/>
+                    <select className='form-select' defaultValue='Выберите категорию'>
+                        <option disabled>Выберите категорию</option>
+                        {optionsCategories}
+                    </select>
                 </div>
                 <div className='col-md-2'>
                     <input className='form-control' type="number" placeholder='Введите цену'/>

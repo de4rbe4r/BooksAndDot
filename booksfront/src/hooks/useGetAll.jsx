@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
 
-const useGetAllBooks = url => {
+const useGetAll = url => {
 
-    const [state, setState] = useState([null, false])
+    const [state, setState] = useState([[], false])
 
     useEffect(() => {
-        setState([null, true]);
+        setState([[], true]);
 
         (async () => {
             const data = await fetch(url)
@@ -16,4 +16,4 @@ const useGetAllBooks = url => {
     return state
 };
 
-export default useGetAllBooks
+export default useGetAll
