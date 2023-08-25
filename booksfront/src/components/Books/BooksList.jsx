@@ -3,7 +3,7 @@ import React from 'react';
 const BooksList = ({books}) => {
     return (
         <div>
-            <div className="display-3">Список книг</div>
+            <h3>Список книг</h3>
             <table className="table">
                 <thead>
                 <tr>
