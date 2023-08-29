@@ -82,10 +82,14 @@ namespace BooksAndDot.Controllers.Books
         [HttpPost]
         public async Task<ActionResult<Book>> PostBook(Book book)
         {
-            _context.Books.Add(book);
+            /*_context.Books.Add(book);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetBook", new { id = book.Id }, book);
+            */
+            Services.BookServices bs = new Services.BookServices(_context);
+            var result = bs.AddBook(book);
+            return result == null ? BadRequest("Ошибка в книге") : result;
         }
 
         // DELETE: api/Books/5

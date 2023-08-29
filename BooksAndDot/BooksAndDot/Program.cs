@@ -14,7 +14,7 @@ namespace BooksAndDot {
     public class Program {
         public static void Main(string[] args) {
             using (AppDbContext db = new AppDbContext()) {
-                db.Database.EnsureDeleted();
+                //db.Database.EnsureDeleted();
                 db.Database.EnsureCreated();
             }
             TestDataUploader testDataUploader = new TestDataUploader();
