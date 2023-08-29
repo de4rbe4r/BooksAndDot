@@ -129,6 +129,13 @@ const BooksForm = ({books}) => {
                         Добавить
                     </button>
                 </div>
+                <div className='col-md-2'>
+                    <button type='submit'
+                        className='btn btn-success'
+                        title='Сохранить книгу'
+                        onClick=''>+
+                    </button>
+                </div>
             </div>
         </div>
     );
