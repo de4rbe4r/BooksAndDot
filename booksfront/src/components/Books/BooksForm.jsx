@@ -43,6 +43,13 @@ const BooksForm = ({books}) => {
                 <div className='col-md-2'>
                     <input className='form-control' type="number" placeholder='Введите цену'/>
                 </div>
+                <div className='col-md-2'>
+                    <button type='submit'
+                        className='btn btn-success'
+                        title='Сохранить книгу'
+                        onClick=''>+
+                    </button>
+                </div>
             </div>
         </div>
     );
