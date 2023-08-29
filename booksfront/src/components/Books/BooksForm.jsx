@@ -18,7 +18,6 @@ const BooksForm = ({books}) => {
     const AddedNewBook = (event) => {
         event.preventDefault()
         const newBook = {
-            id: Date.now(),
             ...book
         }
         create(newBook)
@@ -32,22 +31,22 @@ const BooksForm = ({books}) => {
         })
     }
 
-    // const create = (newBook) => {
-    //     try {
-    //         const response = fetch(urlBooks, {
-    //             method: "POST",
-    //             mode: 'cors',
-    //             body: JSON.stringify(newBook),
-    //             headers: {
-    //                 "Content-Type": "application/json",
-    //             },
-    //         });
-    //         // const json = response.json();
-    //         // console.log("Успех:", JSON.stringify(json));
-    //     } catch (error) {
-    //         console.error("Ошибка:", error);
-    //     }
-    // }
+    const create = (newBook) => {
+        try {
+            const response = fetch(urlBooks, {
+                method: "POST",
+                mode: 'cors',
+                body: JSON.stringify(newBook),
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+            const json = response.json();
+            console.log("Успех:", JSON.stringify(json));
+        } catch (error) {
+            console.error("Ошибка:", error);
+        }
+    }
 
     const optionsAuthors = authors.map((a, index) => {
         return (
@@ -127,13 +126,6 @@ const BooksForm = ({books}) => {
                         </svg>
                         &nbsp;
                         Добавить
-                    </button>
-                </div>
-                <div className='col-md-2'>
-                    <button type='submit'
-                        className='btn btn-success'
-                        title='Сохранить книгу'
-                        onClick=''>+
                     </button>
                 </div>
             </div>
