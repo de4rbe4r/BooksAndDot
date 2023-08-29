@@ -27,7 +27,9 @@ namespace BooksAndDot {
             services.AddCors(opt => opt.AddPolicy(name: MyAppCors,
                 policy =>
                 {
-                    policy.WithOrigins("http://localhost:3000");
+                    policy.WithOrigins("http://localhost:3000")
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
                 }));
             services.AddControllersWithViews()
             .AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
