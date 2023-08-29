@@ -17,8 +17,8 @@ namespace BooksAndDot {
                 //db.Database.EnsureDeleted();
                 db.Database.EnsureCreated();
             }
-            TestDataUploader testDataUploader = new TestDataUploader();
-            testDataUploader.LoadTestDataToDb();
+            //TestDataUploader testDataUploader = new TestDataUploader();
+            //testDataUploader.LoadTestDataToDb();
             CreateHostBuilder(args).Build().Run();
         }
 
