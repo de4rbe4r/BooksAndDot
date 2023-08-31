@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BooksAndDot.Models;
 using BooksAndDot.Models.Books;
+using BooksAndDot.Services;
 
 namespace BooksAndDot.Controllers.Books
 {
@@ -26,20 +27,23 @@ namespace BooksAndDot.Controllers.Books
         public async Task<ActionResult<IEnumerable<Book>>> GetBooks()
         {
             //return await _context.Books.ToListAsync();
-            return await _context.Books
+            /*return await _context.Books
                 .Include(b => b.Authors)
                 .Include(b => b.Categories)
                 .ToListAsync();
+            */
+            BookServices bs = new BookServices(_context);
+            return await bs.ListBooks();
         }
 
         // GET: api/Books/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Book>> GetBook(int id)
         {
-            var book = await _context.Books.FindAsync(id);
+            BookServices bs = new BookServices(_context);
+            Book book = bs.GetBook(id);
 
-            if (book == null)
-            {
+            if (book == null) {
                 return NotFound();
             }
 
@@ -49,30 +53,28 @@ namespace BooksAndDot.Controllers.Books
         // PUT: api/Books/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutBook(int id, Book book)
-        {
-            if (id != book.Id)
-            {
+        public async Task<IActionResult> PutBook(int id, Book book) {
+            if (id != book.Id) {
                 return BadRequest();
             }
 
+            BookServices bs = new BookServices(_context);
+            var newBook = bs.UpdateBook(id, book);
+            if (newBook == null) { return NotFound(); }
+            /*
             _context.Entry(book).State = EntityState.Modified;
 
-            try
-            {
+            try {
                 await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!BookExists(id))
-                {
+            } catch (DbUpdateConcurrencyException) {
+                if (!BookExists(id)) {
                     return NotFound();
                 }
-                else
-                {
+                else {
                     throw;
                 }
             }
+            */
 
             return NoContent();
         }
@@ -87,15 +89,15 @@ namespace BooksAndDot.Controllers.Books
 
             return CreatedAtAction("GetBook", new { id = book.Id }, book);
             */
-            Services.BookServices bs = new Services.BookServices(_context);
+            BookServices bs = new BookServices(_context);
             var result = bs.AddBook(book);
             return result == null ? BadRequest("Ошибка в книге") : result;
         }
 
         // DELETE: api/Books/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteBook(int id)
-        {
+        public async Task<IActionResult> DeleteBook(int id) {
+            /*
             var book = await _context.Books.FindAsync(id);
             if (book == null)
             {
@@ -104,13 +106,14 @@ namespace BooksAndDot.Controllers.Books
 
             _context.Books.Remove(book);
             await _context.SaveChangesAsync();
-
+            */
+            BookServices bs = new BookServices(_context);
+            var book = bs.DeleteBook(id);
+            if (book != null) {
+                return Ok();
+            }
             return NoContent();
         }
 
-        private bool BookExists(int id)
-        {
-            return _context.Books.Any(e => e.Id == id);
-        }
     }
 }
