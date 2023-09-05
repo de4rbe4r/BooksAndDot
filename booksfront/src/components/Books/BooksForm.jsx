@@ -88,7 +88,7 @@ const BooksForm = ({books}) => {
                         className='form-select'
                         value={book.yearPublish}
                         key={book.yearPublish}
-                        onChange={event => setBook({...book, year: event.target.value})}
+                        onChange={event => setBook({...book, yearPublish: event.target.value})}
                     >
                         <option defaultValue disabled>Выберите год</option>
                         {(() => {
