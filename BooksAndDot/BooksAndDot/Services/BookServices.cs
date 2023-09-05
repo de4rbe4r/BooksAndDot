@@ -22,6 +22,7 @@ namespace BooksAndDot.Services {
             }
             book.Title = book.Title.Trim();
             _context.Books.Add(book);
+            
             _context.SaveChanges();
             return book;
         }

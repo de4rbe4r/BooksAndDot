@@ -11,7 +11,7 @@ const BooksForm = ({books}) => {
     const [book, setBook] = useState({
         title: '',
         authorId: '',
-        year: '',
+        yearPublish: '',
         categoryId: '',
         price: ''
     })
@@ -26,7 +26,7 @@ const BooksForm = ({books}) => {
         setBook({
             title: '',
             authorId: '',
-            year: '',
+            yearPublish: '',
             categoryId: '',
             price: ''
         })
@@ -86,8 +86,8 @@ const BooksForm = ({books}) => {
                 <div className='col-md-2'>
                     <select
                         className='form-select'
-                        value={book.year}
-                        key={book.year}
+                        value={book.yearPublish}
+                        key={book.yearPublish}
                         onChange={event => setBook({...book, year: event.target.value})}
                     >
                         <option defaultValue disabled>Выберите год</option>
