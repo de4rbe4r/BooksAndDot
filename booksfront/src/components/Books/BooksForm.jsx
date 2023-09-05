@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import useGetAll from "../../hooks/useGetAll";
 import {urlAuthors, urlBooks, urlCategories} from "../../urls/urlList";
+import MySelect from "../../UI/MySelect";
 
 const BooksForm = ({books}) => {
 
@@ -20,7 +21,7 @@ const BooksForm = ({books}) => {
         const newBook = {
             ...book
         }
-        create(newBook)
+        //create(newBook)
         console.log('Новая книга', newBook)
         setBook({
             title: '',
@@ -73,33 +74,43 @@ const BooksForm = ({books}) => {
                     />
                 </div>
                 <div className='col-md-3'>
-                    <select
-                        className='form-select'
-                        defaultValue='Выберите автора'
+                    <MySelect
+                        props={authors}
                         value={book.authorId}
+                        key={book.authorId}
                         onChange={event => setBook({...book, authorId: event.target.value})}
                     >
-                        <option disabled>Выберите автора</option>
+                        <option defaultValue selected disabled>Выберите автора</option>
                         {optionsAuthors}
+                    </MySelect>
+                </div>
+                <div className='col-md-2'>
+                    <select
+                        className='form-select'
+                        value={book.year}
+                        key={book.year}
+                        onChange={event => setBook({...book, year: event.target.value})}
+                    >
+                        <option defaultValue disabled>Выберите год</option>
+                        {(() => {
+                            const options = [];
+                            const currentYear = new Date().getFullYear()
+                            for (let i = currentYear; i >= 1900; i--) {
+                                options.push(<option value={i}>{i}</option>);
+                            }
+
+                            return options;
+                        })()}
                     </select>
                 </div>
                 <div className='col-md-2'>
-                    <input
-                        className='form-control'
-                        type="number"
-                        placeholder='Введите год издания'
-                        value={book.year}
-                        onChange={event => setBook({...book, year: event.target.value})}
-                    />
-                </div>
-                <div className='col-md-2'>
                     <select
                         className='form-select'
-                        defaultValue='Выберите категорию'
                         value={book.categoryId}
+                        key={book.categoryId}
                         onChange={event => setBook({...book, categoryId: event.target.value})}
                     >
-                        <option disabled>Выберите категорию</option>
+                        <option defaultValue disabled>Выберите категорию</option>
                         {optionsCategories}
                     </select>
                 </div>
