@@ -21,7 +21,7 @@ const BooksForm = ({books}) => {
         const newBook = {
             ...book
         }
-        //create(newBook)
+        create(newBook)
         console.log('Новая книга', newBook)
         setBook({
             title: '',
