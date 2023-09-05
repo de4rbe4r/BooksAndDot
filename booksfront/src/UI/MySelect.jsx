@@ -3,8 +3,8 @@ import React from 'react';
 const MySelect = ({children, props, onChange}) => {
     return (
         <select
-            className='form-select'
             {...props}
+            className='form-select'
             onChange = {onChange}
         >
             {children}

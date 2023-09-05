@@ -77,7 +77,6 @@ const BooksForm = ({books}) => {
                     <MySelect
                         props={authors}
                         value={book.authorId}
-                        key={book.authorId}
                         onChange={event => setBook({...book, authorId: event.target.value})}
                     >
                         <option defaultValue selected disabled>Выберите автора</option>
