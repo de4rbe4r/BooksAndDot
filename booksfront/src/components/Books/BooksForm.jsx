@@ -25,9 +25,13 @@ const BooksForm = ({books}) => {
         console.log('Новая книга', newBook)
         setBook({
             title: '',
-            authorId: '',
+            author: {
+                id: ''
+            },
             yearPublish: '',
-            categoryId: '',
+            categoryId: {
+                id: ''
+            },
             price: ''
         })
     }

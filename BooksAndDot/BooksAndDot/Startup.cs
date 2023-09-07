@@ -57,7 +57,7 @@ namespace BooksAndDot {
                 app.UseSwaggerUI(
                     c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "BookAndDot v1"));
             }
-
+            app.UseStaticFiles();
             app.UseCors(MyAppCors);
             //использовать Serilog при каждом запросе
             app.UseSerilogRequestLogging();
