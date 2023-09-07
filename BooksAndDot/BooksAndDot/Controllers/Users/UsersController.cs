@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BooksAndDot.Models;
 using BooksAndDot.Models.Users;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BooksAndDot.Controllers.Users
 {
