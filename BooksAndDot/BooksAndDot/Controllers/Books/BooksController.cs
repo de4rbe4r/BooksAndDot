@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using BooksAndDot.Models;
 using BooksAndDot.Models.Books;
 using BooksAndDot.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BooksAndDot.Controllers.Books
 {
@@ -24,6 +25,7 @@ namespace BooksAndDot.Controllers.Books
 
         // GET: api/Books
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<Book>>> GetBooks()
         {
             //return await _context.Books.ToListAsync();

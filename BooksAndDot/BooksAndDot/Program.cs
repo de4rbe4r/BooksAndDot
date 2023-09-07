@@ -1,6 +1,7 @@
 using BooksAndDot.Models;
 using BooksAndDot.TestData;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -20,7 +21,11 @@ namespace BooksAndDot {
             Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(configuration).CreateLogger();
             using (AppDbContext db = new AppDbContext()) {
                 //db.Database.EnsureDeleted();
-                db.Database.EnsureCreated();
+                if (db.Database.EnsureCreated()) {
+                    TestDataUploader testDataUploader = new TestDataUploader();
+                    testDataUploader.LoadTestDataToDb();
+                }
+                //db.Database.Migrate();
             }
             //TestDataUploader testDataUploader = new TestDataUploader();
             //testDataUploader.LoadTestDataToDb();

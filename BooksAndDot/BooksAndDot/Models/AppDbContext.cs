@@ -29,6 +29,7 @@ namespace BooksAndDot.Models {
             var config  = builder.Build();
             string connString = config.GetConnectionString("DefaultConnection");
             optionsBuilder.UseSqlServer(connString);
+            //optionsBuilder.LogTo(System.Console.WriteLine);
         }
     }
 }

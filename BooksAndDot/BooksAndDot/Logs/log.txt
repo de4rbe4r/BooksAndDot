@@ -35,3 +35,22 @@
 09/07/2023 19:48:32 Приложение запущено
 09/07/2023 19:48:55 HTTP "POST" "/api/Authentication" responded 200 in 2543.7282 ms
 09/07/2023 19:49:45 HTTP "POST" "/api/Authentication" responded 200 in 4.0867 ms
+09/07/2023 20:21:40 Приложение запущено
+09/07/2023 20:22:13 HTTP "GET" "/api/Authors" responded 200 in 493.5210 ms
+09/07/2023 20:23:01 Приложение запущено
+09/07/2023 20:25:58 Приложение запущено
+09/07/2023 20:26:10 HTTP "GET" "/api/Books" responded 200 in 2001.1513 ms
+09/07/2023 20:29:58 Приложение запущено
+09/07/2023 20:30:15 HTTP "GET" "/api/Authors" responded 200 in 1724.0228 ms
+09/07/2023 20:34:37 Приложение запущено
+09/07/2023 20:35:04 Приложение запущено
+09/07/2023 20:35:16 HTTP "GET" "/api/Authors" responded 200 in 1639.3826 ms
+09/07/2023 20:36:30 Приложение запущено
+09/07/2023 20:36:39 HTTP "GET" "/api/Authors" responded 200 in 582.8086 ms
+09/07/2023 20:52:30 Приложение запущено
+09/07/2023 20:52:49 HTTP "GET" "/api/Books" responded 401 in 90.0350 ms
+09/07/2023 20:53:10 HTTP "POST" "/api/Authentication" responded 200 in 332.8583 ms
+09/07/2023 20:54:39 HTTP "GET" "/api/Books" responded 401 in 1.0107 ms
+09/07/2023 20:57:13 HTTP "POST" "/api/Authentication" responded 200 in 2.6477 ms
+09/07/2023 20:57:28 HTTP "GET" "/api/Authors" responded 200 in 452.7645 ms
+09/07/2023 20:57:45 HTTP "GET" "/favicon.ico" responded 404 in 0.8447 ms
