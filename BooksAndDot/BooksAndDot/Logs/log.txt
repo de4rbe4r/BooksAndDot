@@ -32,3 +32,6 @@
 09/07/2023 19:30:34 HTTP "GET" "/images/covers/nocover.jpg" responded 200 in 114.6894 ms
 09/07/2023 19:30:34 HTTP "GET" "/favicon.ico" responded 404 in 0.1235 ms
 09/07/2023 19:31:01 HTTP "GET" "/images/covers/академия вампиров.jpg" responded 200 in 0.7567 ms
+09/07/2023 19:48:32 Приложение запущено
+09/07/2023 19:48:55 HTTP "POST" "/api/Authentication" responded 200 in 2543.7282 ms
+09/07/2023 19:49:45 HTTP "POST" "/api/Authentication" responded 200 in 4.0867 ms

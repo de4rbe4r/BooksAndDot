@@ -14,5 +14,6 @@ namespace BooksAndDot.Models.Books {
         public List<Author> Authors { get; set; }
         [JsonIgnore]
         public List<Category> Categories { get; set; }
+        public List<Cover> Covers { get; set; }
     }
 }
