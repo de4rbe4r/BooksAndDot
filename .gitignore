@@ -1,6 +1,8 @@
 BooksAndDot/.vs
 BooksAndDot/BooksAndDot/bin
 BooksAndDot/BooksAndDot/obj
+BooksAndDot/BooksAndDot/Logs/*.*
+
 
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 

@@ -47,20 +47,22 @@ namespace BooksAndDot {
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
 
-            app.Run(async (context) =>
+            /*
+             * app.Run(async (context) =>
             {
                 //await context.Response.WriteAsync("Hello World!");
-            });
+            });*/
             if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(
                     c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "BookAndDot v1"));
             }
-            app.UseStaticFiles();
+            
             app.UseCors(MyAppCors);
             //использовать Serilog при каждом запросе
             app.UseSerilogRequestLogging();
+            app.UseStaticFiles();
             app.UseRouting();
             app.UseAuthorization();
             app.UseEndpoints(endpoints => {
