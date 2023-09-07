@@ -1,4 +1,3 @@
-using BooksAndDot.Logger;
 using BooksAndDot.Models;
 
 using Microsoft.AspNetCore.Builder;
@@ -11,7 +10,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json.Linq;
-
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -27,6 +26,7 @@ namespace BooksAndDot {
         }
         public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services) {
+            
             services.AddCors(opt => opt.AddPolicy(name: MyAppCors,
                 policy =>
                 {
@@ -45,14 +45,11 @@ namespace BooksAndDot {
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, LoggerFactory loggerFactory) {
-            loggerFactory.AddFile(Path.Combine(Directory.GetCurrentDirectory(), "logger.txt"));
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
 
-            var logger = loggerFactory.CreateLogger("FileLogger");
             app.Run(async (context) =>
             {
-                logger.LogInformation("Processing request {0}", context.Request.Path);
-                await context.Response.WriteAsync("Hello World!");
+                //await context.Response.WriteAsync("Hello World!");
             });
             if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
@@ -62,7 +59,8 @@ namespace BooksAndDot {
             }
 
             app.UseCors(MyAppCors);
-
+            //использовать Serilog при каждом запросе
+            app.UseSerilogRequestLogging();
             app.UseRouting();
             app.UseAuthorization();
             app.UseEndpoints(endpoints => {
