@@ -20,7 +20,7 @@ const BooksForm = ({books}) => {
             lastName: ''
         },
         yearPublish: '',
-        category: {
+        categories: {
             id: 0,
             title: ''
         },
@@ -46,7 +46,7 @@ const BooksForm = ({books}) => {
         const result = categories.find(с => с.id === event_id)
         setBook({
             ...book,
-            category: {
+            categories: {
                 ...book.category,
                 id: result.id,
                 title: result.title
@@ -153,8 +153,8 @@ const BooksForm = ({books}) => {
                     <select
                         // props={authors}
                         className='form-select'
-                        value={book.category.id}
-                        key={book.category.id}
+                        value={book.categories.id}
+                        key={book.categories.id}
                         onChange={handleSaveCategory}
                     >
                         <option defaultValue selected disabled>Выберите категорию</option>

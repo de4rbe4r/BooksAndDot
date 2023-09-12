@@ -25,7 +25,7 @@ namespace BooksAndDot.Controllers.Books
 
         // GET: api/Books
         [HttpGet]
-        [Authorize]
+//      [Authorize]
         public async Task<ActionResult<IEnumerable<Book>>> GetBooks()
         {
             //return await _context.Books.ToListAsync();

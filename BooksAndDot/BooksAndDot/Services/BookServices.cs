@@ -15,11 +15,11 @@ namespace BooksAndDot.Services {
             _context = context;
         }
         public Book AddBook(Book book) {
-            if (book.YearPublish < 0 || 
+            /*if (book.YearPublish < 0 || 
                 book.YearPublish > DateTime.Now.Year + 1 ||
                 book.Price < 0) {
                 return null;
-            }
+            }*/
             book.Title = book.Title.Trim();
             _context.Books.Add(book);
             
