@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BooksAndDot.Models;
 using BooksAndDot.Models.Orders;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BooksAndDot.Controllers.Orders
 {
@@ -45,6 +46,7 @@ namespace BooksAndDot.Controllers.Orders
         // PUT: api/Shops/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> PutShop(int id, Shop shop)
         {
             if (id != shop.Id)
@@ -76,6 +78,7 @@ namespace BooksAndDot.Controllers.Orders
         // POST: api/Shops
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<Shop>> PostShop(Shop shop)
         {
             _context.Shops.Add(shop);
@@ -86,6 +89,7 @@ namespace BooksAndDot.Controllers.Orders
 
         // DELETE: api/Shops/5
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteShop(int id)
         {
             var shop = await _context.Shops.FindAsync(id);

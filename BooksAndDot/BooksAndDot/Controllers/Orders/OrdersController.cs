@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BooksAndDot.Models;
 using BooksAndDot.Models.Orders;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BooksAndDot.Controllers.Orders
 {
@@ -23,6 +24,7 @@ namespace BooksAndDot.Controllers.Orders
 
         // GET: api/Orders
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<Order>>> GetOrders()
         {
             return await _context.Orders.ToListAsync();
@@ -30,6 +32,7 @@ namespace BooksAndDot.Controllers.Orders
 
         // GET: api/Orders/5
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<ActionResult<Order>> GetOrder(int id)
         {
             var order = await _context.Orders.FindAsync(id);
@@ -45,6 +48,7 @@ namespace BooksAndDot.Controllers.Orders
         // PUT: api/Orders/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> PutOrder(int id, Order order)
         {
             if (id != order.Id)
@@ -76,6 +80,7 @@ namespace BooksAndDot.Controllers.Orders
         // POST: api/Orders
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<Order>> PostOrder(Order order)
         {
             _context.Orders.Add(order);
@@ -86,6 +91,7 @@ namespace BooksAndDot.Controllers.Orders
 
         // DELETE: api/Orders/5
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteOrder(int id)
         {
             var order = await _context.Orders.FindAsync(id);

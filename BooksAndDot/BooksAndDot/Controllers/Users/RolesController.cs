@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BooksAndDot.Models;
 using BooksAndDot.Models.Users;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BooksAndDot.Controllers.Users
 {
@@ -23,6 +24,7 @@ namespace BooksAndDot.Controllers.Users
 
         // GET: api/Roles
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<Role>>> GetRoles()
         {
             return await _context.Roles.ToListAsync();
@@ -30,6 +32,7 @@ namespace BooksAndDot.Controllers.Users
 
         // GET: api/Roles/5
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<ActionResult<Role>> GetRole(int id)
         {
             var role = await _context.Roles.FindAsync(id);
@@ -45,6 +48,7 @@ namespace BooksAndDot.Controllers.Users
         // PUT: api/Roles/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> PutRole(int id, Role role)
         {
             if (id != role.Id)
@@ -76,6 +80,7 @@ namespace BooksAndDot.Controllers.Users
         // POST: api/Roles
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<Role>> PostRole(Role role)
         {
             _context.Roles.Add(role);
@@ -86,6 +91,7 @@ namespace BooksAndDot.Controllers.Users
 
         // DELETE: api/Roles/5
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteRole(int id)
         {
             var role = await _context.Roles.FindAsync(id);
