@@ -1,20 +1,58 @@
 import React, {useState} from 'react';
 import useGetAll from "../../hooks/useGetAll";
 import {urlAuthors, urlBooks, urlCategories} from "../../urls/urlList";
-import MySelect from "../../UI/MySelect";
+// import MySelect from "../../UI/MySelect";
 
 const BooksForm = ({books}) => {
 
     const [authors, loadingAuthors] = useGetAll(urlAuthors)
     const [categories, loadingCategories] = useGetAll(urlCategories)
 
+    //console.log('books: ', books)
+    //console.log('authors: ', authors)
+    //console.log('categories: ', categories)
+
     const [book, setBook] = useState({
         title: '',
-        authorId: '',
+        authors: {
+            id: 0,
+            firstName: '',
+            lastName: ''
+        },
         yearPublish: '',
-        categoryId: '',
+        category: {
+            id: 0,
+            title: ''
+        },
         price: ''
     })
+
+    const handleSaveAuthor = (event) => {
+        let event_id = parseInt(event.target.value)
+        const result = authors.find(a => a.id === event_id)
+        setBook({
+            ...book,
+            authors: {
+                ...book.authors,
+                id: result.id,
+                firstName: result.firstName,
+                lastName: result.lastName
+            }
+        })
+    }
+
+    const handleSaveCategory = (event) => {
+        let event_id = parseInt(event.target.value)
+        const result = categories.find(с => с.id === event_id)
+        setBook({
+            ...book,
+            category: {
+                ...book.category,
+                id: result.id,
+                title: result.title
+            }
+        })
+    }
 
     const AddedNewBook = (event) => {
         event.preventDefault()
@@ -22,18 +60,22 @@ const BooksForm = ({books}) => {
             ...book
         }
         create(newBook)
+        alert('Запись отправлена на сервер')
         console.log('Новая книга', newBook)
-        setBook({
-            title: '',
-            author: {
-                id: ''
-            },
-            yearPublish: '',
-            categoryId: {
-                id: ''
-            },
-            price: ''
-        })
+        // setBook({
+        //     title: '',
+        //     authors: {
+        //         id: 0,
+        //         firstName: '',
+        //         lastName: ''
+        //     },
+        //     yearPublish: '',
+        //     category: {
+        //         id: 0,
+        //         title: ''
+        //     },
+        //     price: ''
+        // })
     }
 
     const create = (newBook) => {
@@ -46,19 +88,19 @@ const BooksForm = ({books}) => {
                     "Content-Type": "application/json",
                 },
             });
-            const json = response.json();
+            let json = response.json();
             console.log("Успех:", JSON.stringify(json));
         } catch (error) {
             console.error("Ошибка:", error);
         }
     }
 
-    const optionsAuthors = authors.map((a, index) => {
+    const optionsAuthors = authors.map((a) => {
         return (
             <option value={a.id} key={a.id}>{`${a.firstName} ${a.lastName}`}</option>
         )
     })
-    const optionsCategories = categories.map((c, index) => {
+    const optionsCategories = categories.map((c) => {
         return (
             <option value={c.id} key={c.id}>{c.title}</option>
         )
@@ -78,14 +120,16 @@ const BooksForm = ({books}) => {
                     />
                 </div>
                 <div className='col-md-3'>
-                    <MySelect
-                        props={authors}
-                        value={book.authorId}
-                        onChange={event => setBook({...book, authorId: event.target.value})}
+                    <select
+                        // props={authors}
+                        className='form-select'
+                        value={book.authors.id}
+                        key={book.authors.id}
+                        onChange={handleSaveAuthor}
                     >
-                        <option defaultValue selected disabled>Выберите автора</option>
+                        <option defaultValue selecte disabled>Выберите автора</option>
                         {optionsAuthors}
-                    </MySelect>
+                    </select>
                 </div>
                 <div className='col-md-2'>
                     <select
@@ -94,26 +138,26 @@ const BooksForm = ({books}) => {
                         key={book.yearPublish}
                         onChange={event => setBook({...book, yearPublish: event.target.value})}
                     >
-                        <option defaultValue disabled>Выберите год</option>
+                        <option defaultValue selected disabled>Выберите год</option>
                         {(() => {
                             const options = [];
                             const currentYear = new Date().getFullYear()
                             for (let i = currentYear; i >= 1900; i--) {
                                 options.push(<option value={i}>{i}</option>);
                             }
-
                             return options;
                         })()}
                     </select>
                 </div>
                 <div className='col-md-2'>
                     <select
+                        // props={authors}
                         className='form-select'
-                        value={book.categoryId}
-                        key={book.categoryId}
-                        onChange={event => setBook({...book, categoryId: event.target.value})}
+                        value={book.category.id}
+                        key={book.category.id}
+                        onChange={handleSaveCategory}
                     >
-                        <option defaultValue disabled>Выберите категорию</option>
+                        <option defaultValue selected disabled>Выберите категорию</option>
                         {optionsCategories}
                     </select>
                 </div>
