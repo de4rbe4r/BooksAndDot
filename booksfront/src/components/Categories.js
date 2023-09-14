@@ -8,11 +8,11 @@ export class Categories extends Component {
                 {
                     key: 'all',
                     name: 'Всё'
-                }
+                },
                 {
                     key: 'Authors',
                     name: 'Авторы'
-                }
+                },
                  {
                     key: 'Books',
                     name: 'Книги'
