@@ -275,3 +275,16 @@
 09/14/2023 18:50:22 HTTP "GET" "/api/Authors" responded 200 in 46.6528 ms
 09/14/2023 18:50:22 HTTP "GET" "/api/Authors" responded 200 in 60.4621 ms
 09/14/2023 18:50:22 HTTP "GET" "/api/Categories" responded 200 in 60.6524 ms
+09/14/2023 19:39:09 Приложение запущено
+09/14/2023 19:39:30 HTTP "GET" "/api/Books" responded 200 in 982.2071 ms
+09/14/2023 19:39:30 HTTP "GET" "/api/Categories" responded 200 in 23.1756 ms
+09/14/2023 19:39:30 HTTP "GET" "/api/Authors" responded 200 in 31.3325 ms
+09/14/2023 19:39:30 HTTP "GET" "/api/Categories" responded 200 in 4.2471 ms
+09/14/2023 19:39:30 HTTP "GET" "/api/Authors" responded 200 in 3.1742 ms
+09/14/2023 19:39:30 HTTP "GET" "/api/Books" responded 200 in 95.8789 ms
+09/14/2023 19:40:00 HTTP "GET" "/api/Books" responded 200 in 18.3947 ms
+09/14/2023 19:40:00 HTTP "GET" "/api/Books" responded 200 in 20.9025 ms
+09/14/2023 19:40:00 HTTP "GET" "/api/Categories" responded 200 in 5.5611 ms
+09/14/2023 19:40:00 HTTP "GET" "/api/Authors" responded 200 in 7.3667 ms
+09/14/2023 19:40:00 HTTP "GET" "/api/Categories" responded 200 in 6.2522 ms
+09/14/2023 19:40:00 HTTP "GET" "/api/Authors" responded 200 in 11.7406 ms
