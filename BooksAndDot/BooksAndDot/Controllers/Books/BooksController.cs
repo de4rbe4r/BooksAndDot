@@ -55,6 +55,7 @@ namespace BooksAndDot.Controllers.Books
         // PUT: api/Books/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> PutBook(int id, Book book) {
             if (id != book.Id) {
                 return BadRequest();
@@ -84,6 +85,7 @@ namespace BooksAndDot.Controllers.Books
         // POST: api/Books
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<Book>> PostBook(Book book)
         {
             /*_context.Books.Add(book);
@@ -98,6 +100,7 @@ namespace BooksAndDot.Controllers.Books
 
         // DELETE: api/Books/5
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteBook(int id) {
             /*
             var book = await _context.Books.FindAsync(id);

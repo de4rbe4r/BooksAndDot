@@ -24,6 +24,7 @@ namespace BooksAndDot.Controllers.Users
 
         // GET: api/Users
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
             return await _context.Users.ToListAsync();
@@ -31,6 +32,7 @@ namespace BooksAndDot.Controllers.Users
 
         // GET: api/Users/5
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<ActionResult<User>> GetUser(int id)
         {
             var user = await _context.Users.FindAsync(id);
@@ -46,6 +48,7 @@ namespace BooksAndDot.Controllers.Users
         // PUT: api/Users/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> PutUser(int id, User user)
         {
             if (id != user.Id)
@@ -77,6 +80,7 @@ namespace BooksAndDot.Controllers.Users
         // POST: api/Users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<User>> PostUser(User user)
         {
             _context.Users.Add(user);
@@ -87,6 +91,7 @@ namespace BooksAndDot.Controllers.Users
 
         // DELETE: api/Users/5
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteUser(int id)
         {
             var user = await _context.Users.FindAsync(id);

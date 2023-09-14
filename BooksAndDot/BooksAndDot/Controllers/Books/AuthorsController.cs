@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BooksAndDot.Models;
 using BooksAndDot.Models.Books;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BooksAndDot.Controllers.Books
 {
@@ -45,6 +46,7 @@ namespace BooksAndDot.Controllers.Books
         // PUT: api/Authors/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> PutAuthor(int id, Author author)
         {
             if (id != author.Id)
@@ -76,6 +78,7 @@ namespace BooksAndDot.Controllers.Books
         // POST: api/Authors
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<Author>> PostAuthor(Author author)
         {
             _context.Authors.Add(author);
@@ -86,6 +89,7 @@ namespace BooksAndDot.Controllers.Books
 
         // DELETE: api/Authors/5
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteAuthor(int id)
         {
             var author = await _context.Authors.FindAsync(id);

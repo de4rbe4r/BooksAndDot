@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using BooksAndDot.Models;
 using Microsoft.AspNetCore.Mvc;
 using BooksAndDot.Models.Books;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BooksAndDot.Controllers.Books {
     [ApiController]
@@ -38,6 +39,7 @@ namespace BooksAndDot.Controllers.Books {
 
         // PUT: api/Categories/5
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> PutCategory(int id, Category category) {
             if (id != category.Id) {
                 return BadRequest();
@@ -64,6 +66,7 @@ namespace BooksAndDot.Controllers.Books {
 
         // POST: api/Categories
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<Category>> PostCategory(Category category)
         {
             _context.Categories.Add(category);
@@ -74,6 +77,7 @@ namespace BooksAndDot.Controllers.Books {
 
         // DELETE: api/Categories/5
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteCategory(int id)
         {
             var category = await _context.Categories.FindAsync(id);
