@@ -1,14 +1,13 @@
 ﻿import React from "react";
 import Books from "./components/Books/Books";
-import Categories from "./components/Categories";
+import {Routes, Route} from "react-router-dom";
 
 function App() {
-
-
     return (
         <div className="container">
-            <Books />
-            <Categories /> 
+            <Routes>
+                <Route path='/books' element={<Books />} />
+            </Routes>
         </div>
   );
 }

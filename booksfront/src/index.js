@@ -4,12 +4,15 @@ import './index.css';
 import App from './App';
 import Footer from "./UI/staticUI/Footer";
 import Header from "./UI/staticUI/Header";
+import {BrowserRouter} from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
         <Header />
-        <App />
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
         <Footer />
     </React.StrictMode>
 );
