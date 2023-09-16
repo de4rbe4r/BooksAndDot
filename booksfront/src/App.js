@@ -6,10 +6,12 @@ import Registration from "./components/Reg/Registration";
 import Authorization from "./components/Auth/Authorization";
 import Shops from "./components/Shops/Shops";
 import NotFound from "./components/NotFound/NotFound";
+import NavBar from "./UI/Navigation/NavBar";
 
 function App() {
     return (
         <div className="container">
+            <NavBar />
             <Routes>
                 <Route path='/books' element={<Books />} />
                 <Route path='/cart' element={<Cart />} />
