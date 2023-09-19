@@ -32,12 +32,12 @@ const BooksForm = ({books}) => {
         const result = authors.find(a => a.id === event_id)
         setBook({
             ...book,
-            authors: {
-                ...book.authors,
+            authors: [{
+//                ...book.authors,
                 id: result.id,
                 firstName: result.firstName,
                 lastName: result.lastName
-            }
+            }]
         })
     }
 
@@ -46,11 +46,11 @@ const BooksForm = ({books}) => {
         const result = categories.find(с => с.id === event_id)
         setBook({
             ...book,
-            categories: {
-                ...book.category,
+            categories: [{
+               // ...book.category,
                 id: result.id,
                 title: result.title
-            }
+            }]
         })
     }
 

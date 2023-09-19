@@ -25,7 +25,6 @@ namespace BooksAndDot.Controllers.Books
 
         // GET: api/Books
         [HttpGet]
-//      [Authorize]
         public async Task<ActionResult<IEnumerable<Book>>> GetBooks()
         {
             //return await _context.Books.ToListAsync();
@@ -93,8 +92,20 @@ namespace BooksAndDot.Controllers.Books
 
             return CreatedAtAction("GetBook", new { id = book.Id }, book);
             */
-            BookServices bs = new BookServices(_context);
-            var result = bs.AddBook(book);
+            //BookServices bs = new BookServices(_context);
+            //var result = bs.AddBook(book);
+            var result = book;
+            /*
+            var newBook = new Book() { 
+                Title = book.Title,
+                Price = book.Price,
+                YearPublish = book.YearPublish,            
+            };
+            */
+            book.Authors = _context.Authors.Where(a => a.Id == book.Authors[0].Id).ToList();
+            book.Categories = _context.Categories.Where(c => c.Id == book.Categories[0].Id).ToList();
+            _context.Books.Add(book);
+            await _context.SaveChangesAsync();
             return result == null ? BadRequest("Ошибка в книге") : result;
         }
 
