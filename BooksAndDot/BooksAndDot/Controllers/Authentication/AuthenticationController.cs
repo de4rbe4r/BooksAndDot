@@ -54,10 +54,15 @@ namespace BooksAndDot.Controllers.Authentication
         private ClaimsIdentity GetIdentity(User user)
         {
             if (user == null) return null;
+
+            User person = _context.Users.FirstOrDefault(u => u.Email == user.Email);
+            if (person == null) return null;
+            if (person.Password != user.Password) return null;
+            person.Role = _context.Roles.FirstOrDefault(r => r.Id == person.RoleId);
             var claims = new List<Claim>
             {
-                new Claim(ClaimsIdentity.DefaultNameClaimType, user.FullName),
-                new Claim(ClaimsIdentity.DefaultRoleClaimType, user.Role.Title)
+                new Claim(ClaimsIdentity.DefaultNameClaimType, person.FullName),
+                new Claim(ClaimsIdentity.DefaultRoleClaimType, person.Role.Title)
             };
             ClaimsIdentity claimsIdentity =
                 new ClaimsIdentity(claims, "Token",
