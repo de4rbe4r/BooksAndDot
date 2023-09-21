@@ -16,6 +16,9 @@ const NavBar = () => {
             <NavLink className='nav-item nav-link link-body-emphasis' to="/cart">
                 Корзина
             </NavLink>
+            <NavLink className='nav-item nav-link link-body-emphasis' to="/auth">
+                Авторизация
+            </NavLink>
         </nav>
     );
 };
