@@ -1,5 +1,6 @@
 ﻿using BooksAndDot.Models;
 using BooksAndDot.Models.Books;
+using BooksAndDot.Models.Orders;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,15 +14,18 @@ namespace BooksAndDot.TestData
         private static string pathAuthors = "./TestData/authors.csv";
         private static string pathBooks = "./TestData/books.csv";
         private static string pathCategories = "./TestData/categories.csv";
+        private static string pathShops = "./TestData/shops.csv";
         public List<Category> Categories { get; set; }
         public List<Author> Authors { get; set; }
         public List<Book> Books { get; set; }
+        public List<Shop> Shops  { get; set; }
 
         public TestDataUploader()
         {
             Categories = new List<Category>();
             Authors = new List<Author>();
             Books = new List<Book>();
+            Shops = new List<Shop>();
         }
         private void ReadAuthorsData()
         {
@@ -88,6 +92,30 @@ namespace BooksAndDot.TestData
                     }
                 }
             }
+
+
+            
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+            }
+        }
+
+        private void ReadShopsData()
+        {
+            try
+            {
+                using (StreamReader reader = new StreamReader(pathShops))
+                {
+                    string line;
+                    while ((line = reader.ReadLine()) != null)
+                    {
+                       Shops.Add(new Shop { Title = line });
+                    }
+                }
+            }
+
+
             catch (Exception e)
             {
                 Console.WriteLine("Error: " + e.Message);
@@ -99,11 +127,13 @@ namespace BooksAndDot.TestData
             ReadAuthorsData();
             ReadCategoriesData();
             ReadBooksData();
+            ReadShopsData();
             using (AppDbContext context = new AppDbContext())
             {
                 context.Books.AddRange(Books);
                 context.Categories.AddRange(Categories);
                 context.Authors.AddRange(Authors);
+                context.Shops.AddRange(Shops);
                 context.SaveChanges();
             }
         }
