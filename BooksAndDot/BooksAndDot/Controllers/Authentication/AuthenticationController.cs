@@ -11,6 +11,7 @@ using System.Security.Claims;
 using System.IdentityModel.Tokens.Jwt;
 using BooksAndDot.Authentication;
 using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace BooksAndDot.Controllers.Authentication
 {
@@ -57,7 +58,10 @@ namespace BooksAndDot.Controllers.Authentication
 
             User person = _context.Users.FirstOrDefault(u => u.Email == user.Email);
             if (person == null) return null;
-            if (person.Password != user.Password) return null;
+            var cryptedPassword = Convert.ToBase64String(
+                System.Security.Cryptography.MD5.HashData(
+                    Encoding.Unicode.GetBytes(user.Password)));
+            if (person.Password != cryptedPassword) return null;
             person.Role = _context.Roles.FirstOrDefault(r => r.Id == person.RoleId);
             var claims = new List<Claim>
             {

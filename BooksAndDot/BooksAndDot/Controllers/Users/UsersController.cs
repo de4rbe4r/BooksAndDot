@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using BooksAndDot.Models;
 using BooksAndDot.Models.Users;
 using Microsoft.AspNetCore.Authorization;
+using System.Text;
 
 namespace BooksAndDot.Controllers.Users
 {
@@ -80,9 +81,22 @@ namespace BooksAndDot.Controllers.Users
         // POST: api/Users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        [Authorize]
+        //[Authorize]
         public async Task<ActionResult<User>> PostUser(User user)
         {
+            
+            User person = _context.Users.FirstOrDefault(u => u.Email == user.Email);
+            if (person != null) {
+                return BadRequest(
+                    new
+                    {
+                        errorText = "Такой пользователь уже зарегистрирован"
+                    });
+            }
+            user.Role = _context.Roles.FirstOrDefault(r => r.Title == "User");
+            byte[] pass = System.Security.Cryptography.MD5.HashData(
+                Encoding.Unicode.GetBytes(user.Password));
+            user.Password = Convert.ToBase64String(pass);
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
