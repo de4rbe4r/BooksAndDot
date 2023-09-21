@@ -110,7 +110,9 @@ namespace BooksAndDot.TestData
                     string line;
                     while ((line = reader.ReadLine()) != null)
                     {
-                       Shops.Add(new Shop { Title = line });
+                        string[] data = line.Split(';');
+                        
+                        Shops.Add(new Shop { Title = data[0], Address = data[1] });
                     }
                 }
             }
