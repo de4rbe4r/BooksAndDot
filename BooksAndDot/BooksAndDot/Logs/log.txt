@@ -1180,3 +1180,4 @@ System.NullReferenceException: Object reference not set to an instance of an obj
 09/21/2023 19:58:36 HTTP "POST" "/api/Authentication" responded 200 in 808.0883 ms
 09/21/2023 19:58:47 HTTP "POST" "/api/Authentication" responded 400 in 57.3054 ms
 09/21/2023 19:58:58 HTTP "POST" "/api/Authentication" responded 400 in 21.0132 ms
+09/21/2023 19:59:20 Приложение запущено
