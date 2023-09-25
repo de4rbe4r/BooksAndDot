@@ -1,8 +1,17 @@
 import React from 'react';
 
 import '../../styles/component/auth.css'
+import {useNavigate} from "react-router-dom";
 
 const Authorization = () => {
+
+    // отмена авторизации - редирект на главную страницу
+    let navigate = useNavigate()
+    const routeChange = () => {
+        let path = '/'
+        navigate(path)
+    }
+
     return (
         <div className='w-50 m-auto'>
             <form>
@@ -17,7 +26,7 @@ const Authorization = () => {
                 </div>
                 <div className='form-btn'>
                     <button className="btn btn-outline-dark py-2 form-btn-inner" type="submit">Войти</button>
-                    <button className="btn btn-outline-danger py-2 form-btn-inner" type="submit">Отмена</button>
+                    <button className="btn btn-outline-danger py-2 form-btn-inner" type="submit" onClick={routeChange}>Отмена</button>
                 </div>
             </form>
         </div>
