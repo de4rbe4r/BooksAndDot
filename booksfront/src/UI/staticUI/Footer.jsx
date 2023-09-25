@@ -7,7 +7,7 @@ const Footer = () => {
     const currentYear = new Date().getFullYear()
 
     return (
-        <div className='footer-area'>
+        <footer className='footer-area'>
             <div className='footer-items'>
                 <div className='footer-inner'>
                     &copy; BooksAndDots - {currentYear}
@@ -20,7 +20,7 @@ const Footer = () => {
                     </a>
                 </div>
             </div>
-        </div>
+        </footer>
     );
 };
 
