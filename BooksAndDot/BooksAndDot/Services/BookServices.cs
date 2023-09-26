@@ -14,20 +14,19 @@ namespace BooksAndDot.Services {
         public BookServices(AppDbContext context) {
             _context = context;
         }
-        public Book AddBook(Book book) {
+        public async Task<Book> AddBook(Book book) {
             /*if (book.YearPublish < 0 || 
                 book.YearPublish > DateTime.Now.Year + 1 ||
                 book.Price < 0) {
                 return null;
             }*/
             book.Title = book.Title.Trim();
-            _context.Books.Add(book);
-            
-            _context.SaveChanges();
+            await _context.Books.AddAsync(book);
+            await _context.SaveChangesAsync();
             return book;
         }
-        public Book DeleteBook(int id) {
-            var book = _context.Books.Find(id);
+        public async Task<Book> DeleteBook(int id) {
+            var book = await _context.Books.FindAsync(id);
             if (book == null) {
                 return null;
             }
@@ -40,25 +39,21 @@ namespace BooksAndDot.Services {
             }
 
             _context.Books.Remove(book);
-            _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
 
             return book;
         }
-        public Book UpdateBook(int id, Book book) {
+        public async Task<Book> UpdateBook(int id, Book book) {
             _context.Entry(book).State = EntityState.Modified;
 
-            try
-            {
-                _context.SaveChangesAsync();
+            try {
+                await _context.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!BookExists(id))
-                {
+            catch (DbUpdateConcurrencyException) {
+                if (!BookExists(id)) {
                     return null;
                 }
-                else
-                {
+                else {
                     throw;
                 }
             }
@@ -70,8 +65,8 @@ namespace BooksAndDot.Services {
                 .Include(b => b.Categories)
                 .ToListAsync();
         }
-        public Book GetBook(int id) {
-            var book = _context.Books.Find(id);
+        public async Task<Book> GetBook(int id) {
+            var book = await _context.Books.FindAsync(id);
             return book;
         }
 
