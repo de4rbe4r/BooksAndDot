@@ -1,0 +1,15 @@
+.form-btn {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.form-btn-inner {
+    width: 100px;
+    margin-right: 15px;
+}
+
+.form-btn-inner:last-child {
+    margin-right: 0;
+}

@@ -1,13 +1,23 @@
 import React from 'react';
+import {NavLink} from "react-router-dom";
 
 import '../../styles/UI/header.css'
 
 const Header = () => {
     return (
-        <div className='container'>
-            <h1 className='header-title'>Books and Dots</h1>
+        <header className='container'>
+            <div className='row'>
+                <div className='col-md-11'>
+                    <h1 className='header-title'>Books and Dots</h1>
+                </div>
+                <div className='col-md-auto pt-2'>
+                    <NavLink className='btn btn-outline-dark' to="/auth">
+                        Войти
+                    </NavLink>
+                </div>
+            </div>
             <hr/>
-        </div>
+        </header>
     );
 };
 
