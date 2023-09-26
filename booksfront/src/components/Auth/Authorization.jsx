@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {useNavigate} from "react-router-dom";
+import Cookies from 'js-cookie';
 import { urlAuth } from "../../urls/urlList";
 
 import '../../styles/component/auth.css'
@@ -21,6 +22,7 @@ const Authorization = () => {
     }
 
     const auth = (user) => {
+        const jwt = Cookies.get('jwt')
         const response = fetch(urlAuth, {
             method: 'POST',
             mode: "cors",
@@ -28,7 +30,7 @@ const Authorization = () => {
             body: JSON.stringify(user),
             headers: {
                 'Content-type': 'application/json',
-                //'Authorization': `Bearer ${jwt}`
+                'Authorization': `Bearer ${jwt}`
             }
         })
         return response.json
