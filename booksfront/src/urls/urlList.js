@@ -1,5 +1,8 @@
 const BASE_URL = 'http://localhost:5000';
 
+// Authentication
+export const urlAuth = BASE_URL + '/api/Authentication'
+
 // Books
 export const urlBooks = BASE_URL + '/api/Books'
 export const urlBooksById = BASE_URL + '/api/Books/'

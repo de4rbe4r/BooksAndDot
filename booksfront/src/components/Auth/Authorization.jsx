@@ -1,13 +1,14 @@
 import React, {useState} from 'react';
+import {useNavigate} from "react-router-dom";
+import { urlAuth } from "../../urls/urlList";
 
 import '../../styles/component/auth.css'
-import {useNavigate} from "react-router-dom";
 
 const Authorization = () => {
 
     const [user, setUser] = useState({
         email: '',
-        pass: ''
+        password: ''
     })
 
     const handleAuthUser = (event) => {
@@ -15,7 +16,22 @@ const Authorization = () => {
         let authUser = {
             ...user
         }
+        auth(authUser)
         console.log('Auth: ', authUser)
+    }
+
+    const auth = (user) => {
+        const response = fetch(urlAuth, {
+            method: 'POST',
+            mode: "cors",
+            credentials: "omit",
+            body: JSON.stringify(user),
+            headers: {
+                'Content-type': 'application/json',
+                //'Authorization': `Bearer ${jwt}`
+            }
+        })
+        return response.json
     }
 
     // отмена авторизации - редирект на главную страницу
@@ -46,8 +62,8 @@ const Authorization = () => {
                         className="form-control mb-2"
                         id="floatingPassword"
                         placeholder="Password"
-                        value={user.pass}
-                        onChange={event => setUser({...user, pass: event.target.value})}
+                        value={user.password}
+                        onChange={event => setUser({...user, password: event.target.value})}
                     />
                         <label htmlFor="floatingPassword">Введите пароль</label>
                 </div>
