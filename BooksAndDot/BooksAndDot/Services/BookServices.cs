@@ -63,6 +63,7 @@ namespace BooksAndDot.Services {
             return await _context.Books
                 .Include(b => b.Authors)
                 .Include(b => b.Categories)
+                .Include(b => b.Covers)
                 .ToListAsync();
         }
         public async Task<Book> GetBook(int id) {

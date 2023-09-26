@@ -42,7 +42,7 @@ namespace BooksAndDot.Controllers.Books
         public async Task<ActionResult<Book>> GetBook(int id)
         {
             BookServices bs = new BookServices(_context);
-            Book book = bs.GetBook(id);
+            Book book = await bs.GetBook(id);
 
             if (book == null) {
                 return NotFound();
