@@ -17,13 +17,13 @@ const Authorization = () => {
         let authUser = {
             ...user
         }
-        auth(authUser)
-        console.log('Auth: ', authUser)
+        console.log(auth(authUser));
+        
     }
 
-    const auth = (user) => {
+    const async auth = (user) => {
         const jwt = Cookies.get('jwt')
-        const response = fetch(urlAuth, {
+        const response = await fetch(urlAuth, {
             method: 'POST',
             mode: "cors",
             credentials: "omit",
@@ -33,7 +33,7 @@ const Authorization = () => {
                 'Authorization': `Bearer ${jwt}`
             }
         })
-        return response.json
+        return response.json        
     }
 
     // отмена авторизации - редирект на главную страницу

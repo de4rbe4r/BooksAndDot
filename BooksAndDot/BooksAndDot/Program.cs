@@ -25,7 +25,7 @@ namespace BooksAndDot {
                     TestDataUploader testDataUploader = new TestDataUploader();
                     testDataUploader.LoadTestDataToDb();
                 }
-                //db.Database.Migrate();
+               //db.Database.Migrate();
             }
             //TestDataUploader testDataUploader = new TestDataUploader();
             //testDataUploader.LoadTestDataToDb();

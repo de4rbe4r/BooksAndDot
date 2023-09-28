@@ -67,7 +67,17 @@ namespace BooksAndDot.Services {
                 .ToListAsync();
         }
         public async Task<Book> GetBook(int id) {
-            var book = await _context.Books.FindAsync(id);
+            var book = await _context.Books
+                .Include(b => b.Authors)
+                .Include(b => b.Categories)
+                .Include(b => b.Covers)
+                .FirstOrDefaultAsync(b => b.Id == id);
+            
+            /*var book = await _context.Books.Where()
+                .Include(b => b.Authors)
+                .Include(b => b.Categories)
+                .Include(b => b.Covers);
+            */
             return book;
         }
 

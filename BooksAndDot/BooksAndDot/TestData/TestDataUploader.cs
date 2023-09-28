@@ -127,7 +127,8 @@ namespace BooksAndDot.TestData
                             YearPublish = Int32.Parse(data[3]),
                             Price = Double.Parse(data[4].Replace('.',',')),
                             Categories = new List<Category> { tempCategory },
-                            Covers = new List<Cover> { tempCover }
+                            Covers = new List<Cover> { tempCover },
+                            Description =  data[7]
                         });
                     }
                 }
@@ -168,6 +169,7 @@ namespace BooksAndDot.TestData
             ReadBooksData();
             ReadShopsData();
             ReadUserData();
+            
             using (AppDbContext context = new AppDbContext())
             {
                 context.Books.AddRange(Books);
