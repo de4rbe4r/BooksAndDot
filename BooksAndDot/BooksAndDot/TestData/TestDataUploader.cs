@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace BooksAndDot.TestData
@@ -56,7 +57,7 @@ namespace BooksAndDot.TestData
                             FullName = data[0],
                             Email = data[1],
                             Phone = data[2],
-                            Password = data[3],
+                            Password = Convert.ToBase64String(System.Security.Cryptography.MD5.HashData(Encoding.Unicode.GetBytes(data[3]))),
                             Role = tempRole
                         });
                     }
