@@ -20,7 +20,7 @@ namespace BooksAndDot {
                 .Build();
             Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(configuration).CreateLogger();
             using (AppDbContext db = new AppDbContext()) {
-                db.Database.EnsureDeleted();
+                //db.Database.EnsureDeleted();
                 if (db.Database.EnsureCreated()) {
                     TestDataUploader testDataUploader = new TestDataUploader();
                     testDataUploader.LoadTestDataToDb();
