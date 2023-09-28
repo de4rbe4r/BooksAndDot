@@ -1,6 +1,6 @@
 import React from 'react';
 
-const BooksList = ({books}) => {
+const BooksCatalogList = ({books}) => {
     return (
         <div>
             <h3>Список книг</h3>
@@ -32,4 +32,4 @@ const BooksList = ({books}) => {
     );
 };
 
-export default BooksList;
+export default BooksCatalogList;

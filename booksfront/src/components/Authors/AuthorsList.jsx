@@ -3,13 +3,13 @@ import React from 'react';
 const AuthorsList = ({ authors }) => {
     return (
         <div>
-            <h3>Список авторов</h3>
+            <h3>пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ</h3>
             <table className="table">
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Имя</th>
-                        <th>Фамилия</th>
+                        <th>пїЅпїЅпїЅ</th>
+                        <th>пїЅпїЅпїЅпїЅпїЅпїЅпїЅ</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -28,4 +28,4 @@ const AuthorsList = ({ authors }) => {
     );
 };
 
-export default BooksList;
+export default BooksCatalogList;

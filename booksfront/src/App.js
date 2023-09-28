@@ -7,12 +7,14 @@ import Authorization from "./components/Auth/Authorization";
 import Shops from "./components/Shops/Shops";
 import NotFound from "./components/NotFound/NotFound";
 import NavBar from "./UI/Navigation/NavBar";
+import Home from "./components/Home/Home";
 
 function App() {
     return (
         <div className="container">
             <NavBar />
             <Routes>
+                <Route path='/' element={<Home />} />
                 <Route path='/books' element={<Books />} />
                 <Route path='/cart' element={<Cart />} />
                 <Route path='/reg' element={<Registration />} />

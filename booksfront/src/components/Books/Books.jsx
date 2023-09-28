@@ -1,7 +1,7 @@
 import React from 'react';
 import useGetAll from "../../hooks/useGetAll";
 import {urlBooks} from "../../urls/urlList";
-import BooksList from "./BooksList";
+import BooksCatalogList from "./BooksCatalogList";
 import BooksForm from "./BooksForm";
 
 const Books = () => {
@@ -17,7 +17,7 @@ const Books = () => {
     return (
         <div>
             <BooksForm books={books}/>
-            <BooksList books={books}/>
+            <BooksCatalogList books={books}/>
         </div>
     );
 };
