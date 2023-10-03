@@ -6,7 +6,6 @@ import '../../styles/component/booksImg.css'
 const BooksCardList = () => {
 
     const [books, loading] = useGetAll(urlBooks)
-    console.log('books ', books)
 
     if (loading) {
         return <h3>Загрузка...</h3>

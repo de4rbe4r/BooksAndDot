@@ -21,9 +21,9 @@ const Authorization = () => {
         
     }
 
-    const async auth = (user) => {
+    const auth = (user) => {
         const jwt = Cookies.get('jwt')
-        const response = await fetch(urlAuth, {
+        const response = fetch(urlAuth, {
             method: 'POST',
             mode: "cors",
             credentials: "omit",
