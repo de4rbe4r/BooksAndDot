@@ -1,0 +1,12 @@
+.books-img {
+    width: 180px;
+    height: 250px;
+}
+
+.books-disc-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import useGetAll from "../../hooks/useGetAll";
 import {urlBooks} from "../../urls/urlList";
-import '../../styles/component/booksImg.css'
+import '../../styles/component/booksCard.css'
 
 const BooksCardList = () => {
 
@@ -24,7 +24,7 @@ const BooksCardList = () => {
                                 <strong className="d-inline-block mb-2 text-primary-emphasis">{b.categories.map(c => (c.title))}</strong>
                                 <h3 className="mb-0">{b.title}</h3>
                                 <div className="mb-1 text-body-secondary">Автор: {b.authors.map(a => (`${a.firstName} ${a.lastName}`)) }</div>
-                                <p className="card-text mb-auto">Описание: {b.description}</p>
+                                <p className="card-text books-disc-text mb-auto">Описание: {b.description}</p>
                                 <p className="card-text mb-auto">Год издания: {b.yearPublish}</p>
                                 <a href="#" className="icon-link gap-1 icon-link-hover stretched-link">
                                     Читать далее
