@@ -26,7 +26,6 @@ const BooksCardList = () => {
                                 <div className="mb-1 text-body-secondary">Автор: {b.authors.map(a => (`${a.firstName} ${a.lastName}`)) }</div>
                                 <p className="card-text books-disc-text mb-auto">Описание: {b.description}</p>
                                 <p className="card-text mb-auto">Год издания: {b.yearPublish}</p>
-
                                 <a href={'/books/' + `${b.id}`} className="icon-link gap-1 icon-link-hover stretched-link">
                                     Читать далее
                                 </a>
