@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
 import {useNavigate} from "react-router-dom";
-import Cookies from 'js-cookie';
 import { urlAuth } from "../../urls/urlList";
 
 import '../../styles/component/auth.css'
 
 const Authorization = () => {
+
+    let navigate = useNavigate()
 
     const [user, setUser] = useState({
         email: '',
@@ -17,27 +18,32 @@ const Authorization = () => {
         let authUser = {
             ...user
         }
-        console.log(auth(authUser));
-        
+        auth(authUser)
     }
 
     const auth = (user) => {
-        const jwt = Cookies.get('jwt')
-        const response = fetch(urlAuth, {
+        fetch(urlAuth, {
             method: 'POST',
             mode: "cors",
             credentials: "omit",
             body: JSON.stringify(user),
             headers: {
-                'Content-type': 'application/json',
-                'Authorization': `Bearer ${jwt}`
+                'Content-Type': 'application/json'
+            }
+        }).then((response) => {
+            return response.json()
+        }).then((response) => {
+            if (Object.keys(response).length === 0) {
+                console.error('Неверные данные для входа')
+            } else {
+                sessionStorage.setItem('userName', response['userName'])
+                sessionStorage.setItem('access_token', response['access_token'])
+                //console.log('token - ', sessionStorage.getItem('access_token').toString())
             }
         })
-        return response.json        
     }
 
     // отмена авторизации - редирект на главную страницу
-    let navigate = useNavigate()
     const routeChange = () => {
         let path = '/'
         navigate(path)
