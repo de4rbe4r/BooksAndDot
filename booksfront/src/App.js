@@ -17,7 +17,11 @@ function App() {
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/books' element={<Books />} />
+<<<<<<< HEAD
                 <Route index path="/books/:id" element={<Book />} />
+=======
+                {/* <Route path='/book/5' element={<Book />} /> */}
+>>>>>>> 666f91f103a2139550ccb346d602e72686bf4f3a
                 <Route path='/cart' element={<Cart />} />
                 <Route path='/reg' element={<Registration />} />
                 <Route path='/auth' element={<Authorization />} />
