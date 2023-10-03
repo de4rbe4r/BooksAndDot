@@ -7,6 +7,7 @@ import '../../styles/component/auth.css'
 const Authorization = () => {
 
     let navigate = useNavigate()
+    let pathHome = '/'
 
     const [user, setUser] = useState({
         email: '',
@@ -39,14 +40,14 @@ const Authorization = () => {
                 sessionStorage.setItem('userName', response['userName'])
                 sessionStorage.setItem('access_token', response['access_token'])
                 //console.log('token - ', sessionStorage.getItem('access_token').toString())
+                navigate(pathHome)
             }
         })
     }
 
     // отмена авторизации - редирект на главную страницу
     const routeChange = () => {
-        let path = '/'
-        navigate(path)
+        navigate(pathHome)
     }
 
     return (
