@@ -8,6 +8,7 @@ import Shops from "./components/Shops/Shops";
 import NotFound from "./components/NotFound/NotFound";
 import NavBar from "./UI/Navigation/NavBar";
 import Home from "./components/Home/Home";
+import Book from "./components/Books/Book";
 
 function App() {
     return (
@@ -16,6 +17,7 @@ function App() {
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/books' element={<Books />} />
+                <Route index path="/books/:id" element={<Book />} />
                 <Route path='/cart' element={<Cart />} />
                 <Route path='/reg' element={<Registration />} />
                 <Route path='/auth' element={<Authorization />} />
