@@ -34,7 +34,8 @@ namespace BooksAndDot.Controllers.Books
                 .ToListAsync();
             */
             BookServices bs = new BookServices(_context);
-            return await bs.ListBooks();
+            var result = await bs.ListBooks();
+            return Ok(result.Value);
         }
 
         // GET: api/Books/5

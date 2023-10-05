@@ -266,3 +266,5 @@ D:\booksanddot\booksanddot\BooksAndDot\TestBooksAndDot\obj\Debug\net5.0\refint\T
 D:\booksanddot\booksanddot\BooksAndDot\TestBooksAndDot\obj\Debug\net5.0\TestBooksAndDot.pdb
 D:\booksanddot\booksanddot\BooksAndDot\TestBooksAndDot\obj\Debug\net5.0\TestBooksAndDot.genruntimeconfig.cache
 D:\booksanddot\booksanddot\BooksAndDot\TestBooksAndDot\obj\Debug\net5.0\ref\TestBooksAndDot.dll
+D:\booksanddot\booksanddot\BooksAndDot\TestBooksAndDot\bin\Debug\net5.0\Castle.Core.dll
+D:\booksanddot\booksanddot\BooksAndDot\TestBooksAndDot\bin\Debug\net5.0\Moq.dll
