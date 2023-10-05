@@ -55,7 +55,7 @@ namespace BooksAndDot.Controllers.Books
         // PUT: api/Books/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        [Authorize]
+        [Authorize]        
         public async Task<IActionResult> PutBook(int id, Book book) {
             if (id != book.Id) {
                 return BadRequest();
