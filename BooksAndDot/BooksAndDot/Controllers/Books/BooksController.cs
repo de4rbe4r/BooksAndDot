@@ -85,7 +85,7 @@ namespace BooksAndDot.Controllers.Books
         // POST: api/Books
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        [Authorize]
+        //[Authorize]
         public async Task<ActionResult<Book>> PostBook(Book book)
         {
             /*_context.Books.Add(book);

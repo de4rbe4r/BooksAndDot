@@ -21,6 +21,7 @@ namespace BooksAndDot.Models {
         public DbSet<BooksShop> BooksShops { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
+        public DbSet<Payment> Payments { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
             var builder = new ConfigurationBuilder();
