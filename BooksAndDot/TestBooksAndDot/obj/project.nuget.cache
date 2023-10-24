@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "CyA4GRNDTu/HXIFF7yHtteqXt2EAFMC4G3syskPss4fSABEuAA+lYikck7mo0lAdImRDKa56lsICGVaUi+N4rQ==",
+  "dgSpecHash": "i8mv2jEe1YwyosXVmLDJOHMF92aPNxfYNkud4+enePOzV7NUb3cwuk+HlRsiSOPwEMnVZoYWH556cJRffF3sqA==",
   "success": true,
   "projectFilePath": "D:\\booksanddot\\booksanddot\\BooksAndDot\\TestBooksAndDot\\TestBooksAndDot.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Student\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
     "C:\\Users\\Student\\.nuget\\packages\\coverlet.collector\\3.2.0\\coverlet.collector.3.2.0.nupkg.sha512",
+    "C:\\Users\\Student\\.nuget\\packages\\dapper\\2.1.15\\dapper.2.1.15.nupkg.sha512",
     "C:\\Users\\Student\\.nuget\\packages\\humanizer.core\\2.2.0\\humanizer.core.2.2.0.nupkg.sha512",
     "C:\\Users\\Student\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\5.0.17\\microsoft.aspnetcore.authentication.jwtbearer.5.0.17.nupkg.sha512",
     "C:\\Users\\Student\\.nuget\\packages\\microsoft.aspnetcore.hosting.abstractions\\2.2.0\\microsoft.aspnetcore.hosting.abstractions.2.2.0.nupkg.sha512",

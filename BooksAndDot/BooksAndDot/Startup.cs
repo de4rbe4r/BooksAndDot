@@ -23,6 +23,7 @@ namespace BooksAndDot {
     public class Startup {
 
         readonly string MyAppCors = "_myAppCors";
+        public static string connString = @"Server=(localdb)\mssqllocaldb;Database=booksanddot;Trusted_Connection=True;";
         public Startup(IConfiguration configuration) {
             Configuration = configuration;
         }
@@ -42,6 +43,10 @@ namespace BooksAndDot {
             //services.AddControllers().AddNewtonsoftJson()
             services.AddControllers();
             services.AddDbContext<AppDbContext>();
+
+            services.AddTransient<IBookRepository, BookRepository>
+                (provider => new BookRepository(connString));
+            
             services.AddSwaggerGen(c => { 
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "BooksAndDot", Version = "v1" });
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
