@@ -1,4 +1,5 @@
-﻿using BooksAndDot.Models.Users;
+﻿using BooksAndDot.Models.DTO.Orders;
+using BooksAndDot.Models.Users;
 using System;
 
 namespace BooksAndDot.Models.Orders {
@@ -9,6 +10,16 @@ namespace BooksAndDot.Models.Orders {
         public User User { get; set; }
         public double Sum { get; set; }
         public DateTime DatePayment { get; set; }
+
+        public PaymentDTO PaymentExtension() {
+            PaymentDTO paymentDTO = new PaymentDTO() { 
+                PaymentId = PaymentId,
+                UserId = UserId,
+                Sum = Sum,
+                DatePayment = DatePayment
+            };
+            return paymentDTO;
+        }
 
     }
 }
