@@ -17,10 +17,20 @@ namespace BooksAndDot.Controllers.Books
     public class BooksController : ControllerBase
     {
         private readonly AppDbContext _context;
+        private readonly IBookRepository _bookRepository;
 
-        public BooksController(AppDbContext context)
+        public BooksController(AppDbContext context, IBookRepository bs)
         {
+            _bookRepository = bs;
             _context = context;
+        }
+        [HttpGet("dapper")]
+        public async Task<ActionResult<IEnumerable<Book>>> GetAllBooks() {
+            return await _bookRepository.GetBooks();
+        }
+        [HttpGet("dapper/{id}")]
+        public async Task<ActionResult<Book>> GetBookById(int id) {
+            return await _bookRepository.GetBookById(id);
         }
 
         // GET: api/Books

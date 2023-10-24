@@ -25,7 +25,8 @@ namespace BooksAndDot.Models {
         }
         public async Task<List<Book>> GetBooks() {
             using (IDbConnection conn = new SqlConnection(connString)) {
-                var books = await conn.QueryAsync<Book>("SELECT * FROM Books");
+                var books = await conn.QueryAsync<Book>
+                    ("SELECT * FROM Books ");
                 return books.ToList();
             }
         }
