@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "i8mv2jEe1YwyosXVmLDJOHMF92aPNxfYNkud4+enePOzV7NUb3cwuk+HlRsiSOPwEMnVZoYWH556cJRffF3sqA==",
+  "dgSpecHash": "WTG4ZzexxlZNRTdF1vk8LtAdGZi6lyk73HpmCK0C4A9YU8QHEppKtk18fS6vtS97JDJVSS2kFjLNjWdpPlhqqQ==",
   "success": true,
   "projectFilePath": "D:\\booksanddot\\booksanddot\\BooksAndDot\\TestBooksAndDot\\TestBooksAndDot.csproj",
   "expectedPackageFiles": [
@@ -64,6 +64,7 @@
     "C:\\Users\\Student\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\Student\\.nuget\\packages\\microsoft.testplatform.objectmodel\\17.5.0\\microsoft.testplatform.objectmodel.17.5.0.nupkg.sha512",
     "C:\\Users\\Student\\.nuget\\packages\\microsoft.testplatform.testhost\\17.5.0\\microsoft.testplatform.testhost.17.5.0.nupkg.sha512",
+    "C:\\Users\\Student\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.19.4\\microsoft.visualstudio.azure.containers.tools.targets.1.19.4.nupkg.sha512",
     "C:\\Users\\Student\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration\\5.0.2\\microsoft.visualstudio.web.codegeneration.5.0.2.nupkg.sha512",
     "C:\\Users\\Student\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.contracts\\5.0.2\\microsoft.visualstudio.web.codegeneration.contracts.5.0.2.nupkg.sha512",
     "C:\\Users\\Student\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.core\\5.0.2\\microsoft.visualstudio.web.codegeneration.core.5.0.2.nupkg.sha512",
